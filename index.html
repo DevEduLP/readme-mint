@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ReadmeForge | Gerador Moderno de README.md & Badges</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="bg-glow"></div>
+
+  <header class="topbar">
+    <div class="brand">
+      <div class="logo-box">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+      </div>
+      <div>
+        <h1>ReadmeForge <span class="version-tag">v1.0</span></h1>
+        <p>Gerador Open Source de README.md e Badges</p>
+      </div>
+    </div>
+
+    <div class="topbar-actions">
+      <span id="save-status" class="save-badge">● Salvo</span>
+      <button id="btn-reset" class="btn btn-ghost" title="Restaurar modelo padrão">Restaurar</button>
+      <a href="https://github.com/DevEduLP/readme-forge" target="_blank" rel="noopener noreferrer" class="btn btn-star">
+        <span>⭐</span> Apoiar no GitHub
+      </a>
+    </div>
+  </header>
+
+  <!-- Barra de Templates Rápidos -->
+  <div class="templates-bar">
+    <span class="templates-label">Templates rápidos:</span>
+    <button class="tpl-btn" data-tpl="c-cli">⚙️ C / CLI</button>
+    <button class="tpl-btn" data-tpl="python-cv">👁️ Python / IA</button>
+    <button class="tpl-btn active" data-tpl="web-app">🌐 Web App</button>
+    <button class="tpl-btn" data-tpl="academic">🎓 Acadêmico</button>
+  </div>
+
+  <main class="workspace">
+    <!-- Coluna Esquerda: Editor -->
+    <section class="panel editor-panel">
+      <div class="panel-header">
+        <h2>Configuração do Projeto</h2>
+        <span class="header-hint">Edição em tempo real</span>
+      </div>
+
+      <div class="form-scroll">
+        <!-- Bloco 1: Identidade -->
+        <div class="form-card">
+          <div class="card-title">01. Identidade & Links</div>
+          <div class="form-group">
+            <label for="project-title">Nome do Projeto</label>
+            <input type="text" id="project-title" placeholder="Ex: ReadmeForge" />
+          </div>
+
+          <div class="form-group">
+            <label for="project-desc">Descrição Curta</label>
+            <textarea id="project-desc" rows="2" placeholder="Explique em poucas linhas qual dor o projeto resolve..."></textarea>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="github-user">Usuário GitHub (para Badges)</label>
+              <input type="text" id="github-user" placeholder="DevEduLP" />
+            </div>
+            <div class="form-group">
+              <label for="github-repo">Repositório (para Badges)</label>
+              <input type="text" id="github-repo" placeholder="readme-forge" />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="demo-url">Link da Demo / Deploy</label>
+              <input type="url" id="demo-url" placeholder="https://seu-projeto.vercel.app" />
+            </div>
+            <div class="form-group">
+              <label for="banner-url">URL de Banner / GIF</label>
+              <input type="url" id="banner-url" placeholder="https://.../demo.gif" />
+            </div>
+          </div>
+        </div>
+
+        <!-- Bloco 2: Badges e Seções -->
+        <div class="form-card">
+          <div class="label-inline">
+            <div class="card-title" style="margin:0">02. Stack & Badges</div>
+            <select id="badge-style" class="mini-select" title="Estilo visual das badges">
+              <option value="for-the-badge">for-the-badge</option>
+              <option value="flat-square">flat-square</option>
+              <option value="flat">flat</option>
+              <option value="plastic">plastic</option>
+            </select>
+          </div>
+
+          <div id="tech-badges" class="chips-grid"></div>
+
+          <div class="custom-badge-row">
+            <input type="text" id="custom-tech-name" placeholder="Nova tech (ex: Rust, Arduino)" />
+            <input type="color" id="custom-tech-color" value="#3b82f6" title="Cor da badge" />
+            <button type="button" id="btn-add-badge" class="btn btn-secondary">+ Add</button>
+          </div>
+
+          <div class="checkbox-list">
+            <label class="check-pill"><input type="checkbox" id="badge-license" checked /><span>Licença</span></label>
+            <label class="check-pill"><input type="checkbox" id="badge-stars" checked /><span>Stars</span></label>
+            <label class="check-pill"><input type="checkbox" id="badge-issues" /><span>Issues</span></label>
+            <label class="check-pill"><input type="checkbox" id="badge-lastcommit" checked /><span>Last Commit</span></label>
+            <label class="check-pill"><input type="checkbox" id="opt-toc" checked /><span>Sumário</span></label>
+            <label class="check-pill"><input type="checkbox" id="opt-contrib" checked /><span>Contribuição</span></label>
+          </div>
+        </div>
+
+        <!-- Bloco 3: Conteúdo Técnico -->
+        <div class="form-card">
+          <div class="card-title">03. Documentação Técnica</div>
+
+          <div class="form-group">
+            <label for="prereq-list">Pré-requisitos (um por linha)</label>
+            <textarea id="prereq-list" rows="2"></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="features">Funcionalidades Principais (uma por linha)</label>
+            <textarea id="features" rows="3"></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="tree-input">Estrutura de Pastas (caminho por linha)</label>
+            <textarea id="tree-input" rows="4"></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="install-cmd">Comandos de Instalação / Execução</label>
+            <textarea id="install-cmd" rows="3"></textarea>
+          </div>
+        </div>
+
+        <!-- Bloco 4: Licença e Autoria -->
+        <div class="form-card">
+          <div class="card-title">04. Licença & Autoria</div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="license-select">Licença Open Source</label>
+              <select id="license-select">
+                <option value="MIT" selected>MIT License</option>
+                <option value="GPL-3.0">GNU GPLv3</option>
+                <option value="Apache-2.0">Apache 2.0</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="author-name">Autor / Mantenedor</label>
+              <input type="text" id="author-name" placeholder="Seu nome" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Coluna Direita: Saída -->
+    <section class="panel output-panel">
+      <div class="panel-header output-header">
+        <div class="tabs">
+          <button class="tab active" data-tab="preview">👁️ Preview</button>
+          <button class="tab" data-tab="markdown">📝 Markdown</button>
+          <button class="tab" data-tab="license">⚖️ LICENSE</button>
+        </div>
+        <div class="output-actions">
+          <button id="btn-toggle-theme" class="btn btn-ghost" title="Alternar tema do Preview">☀️ Light</button>
+          <button id="btn-copy" class="btn btn-primary">Copiar .md</button>
+          <button id="btn-download-md" class="btn btn-secondary">Baixar .md</button>
+          <button id="btn-download-lic" class="btn btn-secondary">LICENSE</button>
+        </div>
+      </div>
+
+      <!-- Preview estilo GitHub -->
+      <div id="view-preview" class="output-content active preview-wrapper">
+        <div class="gh-card" id="gh-preview-card">
+          <div class="gh-card-header">
+            <div class="gh-file-badge">
+              <span class="dot red"></span>
+              <span class="dot yellow"></span>
+              <span class="dot green"></span>
+              <span class="file-name">README.md</span>
+            </div>
+            <span id="preview-theme-label" class="gh-theme-tag">GitHub Dark</span>
+          </div>
+          <div id="preview-render" class="preview-body"></div>
+        </div>
+      </div>
+
+      <!-- Código Markdown -->
+      <div id="view-markdown" class="output-content">
+        <textarea id="markdown-output" readonly spellcheck="false"></textarea>
+      </div>
+
+      <!-- Arquivo LICENSE -->
+      <div id="view-license" class="output-content">
+        <textarea id="license-output" readonly spellcheck="false"></textarea>
+      </div>
+    </section>
+  </main>
+
+  <div id="toast" class="toast"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
