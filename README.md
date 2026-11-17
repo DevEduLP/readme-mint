@@ -1,9 +1,9 @@
-# ⚡ ReadmeForge
+# ⚡ ReadmeMint
 
-![License](https://img.shields.io/github/license/DevEduLP/readme-forge?style=flat-square)
-![Stars](https://img.shields.io/github/stars/DevEduLP/readme-forge?style=flat-square)
-![Issues](https://img.shields.io/github/issues/DevEduLP/readme-forge?style=flat-square)
-![Last Commit](https://img.shields.io/github/last-commit/DevEduLP/readme-forge?style=flat-square)
+![License](https://img.shields.io/github/license/DevEduLP/readme-mint?style=flat-square)
+![Stars](https://img.shields.io/github/stars/DevEduLP/readme-mint?style=flat-square)
+![Issues](https://img.shields.io/github/issues/DevEduLP/readme-mint?style=flat-square)
+![Last Commit](https://img.shields.io/github/last-commit/DevEduLP/readme-mint?style=flat-square)
 
 Estúdio web open source, leve e 100% client-side para criar arquivos **README.md** profissionais, **badges dinâmicos** (Shields.io), **árvores de diretórios em ASCII** e arquivos **LICENSE** preenchidos em segundos - sem precisar criar conta ou instalar dependências.
 
@@ -63,10 +63,10 @@ Como o projeto foi construído com **HTML, CSS e JavaScript puro** (zero depend�
 
 ```bash
 # 1. Clone o repositório
-git clone https://github.com/DevEduLP/readme-forge.git
+git clone https://github.com/DevEduLP/readme-mint.git
 
 # 2. Acesse a pasta do projeto
-cd readme-forge
+cd readme-mint
 
 # 3. Abra o arquivo index.html no seu navegador preferido
 ```
