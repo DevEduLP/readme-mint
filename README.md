@@ -7,7 +7,7 @@
 
 Estúdio web open source, leve e 100% client-side para criar arquivos **README.md** profissionais, **badges dinâmicos** (Shields.io), **árvores de diretórios em ASCII** e arquivos **LICENSE** preenchidos em segundos - sem precisar criar conta ou instalar dependências.
 
-🔗 **Demo Online:** [https://devedulp.github.io/readme-forge/](https://devedulp.github.io/readme-forge/)
+🔗 **Demo Online:** [https://devedulp.github.io/readme-forge/](https://devedulp.github.io/readme-mint/)
 
 > **Gostou da ferramenta?** Deixe uma ⭐ no repositório para apoiar o projeto open source!
 
