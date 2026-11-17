@@ -1,4 +1,4 @@
-const STORAGE_KEY = "readmeforge_state_v3";
+const STORAGE_KEY = "readmemint_state_v3";
 
 let TECH_STACK = [
   { name: "C", color: "00599C", logo: "c", logoColor: "white", selected: true },
@@ -49,17 +49,17 @@ const TEMPLATES = {
     author: "Eduardo Livi Pedruzzi"
   },
   "web-app": {
-    title: "ReadmeForge - Gerador de README.md",
+    title: "ReadmeMint - Gerador de README.md",
     desc: "Ferramenta web open source e offline-first para criar arquivos README.md profissionais, badges dinâmicos, árvores de diretórios e licenças em segundos.",
     user: "DevEduLP",
     repo: "readme-forge",
-    demo: "https://devedulp.github.io/readme-forge/",
+    demo: "https://devedulp.github.io/readme-mint/",
     banner: "",
     techs: ["HTML5", "CSS3", "JavaScript", "Vercel"],
     prereq: "Qualquer navegador moderno (Chrome, Firefox, Edge)",
     features: "Preview visual lado a lado em tempo real\nGerador automático de árvore ASCII de pastas\nDownload direto de README.md e LICENSE preenchidos",
     tree: "index.html\nstyle.css\napp.js\nLICENSE\nREADME.md",
-    install: "git clone https://github.com/DevEduLP/readme-forge.git\ncd readme-forge\n# Abra o arquivo index.html diretamente no navegador",
+    install: "git clone https://github.com/DevEduLP/readme-mint.git\ncd readme-mint\n# Abra o arquivo index.html diretamente no navegador",
     license: "MIT",
     author: "Eduardo Livi Pedruzzi"
   },
@@ -68,7 +68,7 @@ const TEMPLATES = {
     desc: "Implementação didática e benchmark experimental de algoritmos de compressão sem perdas (Huffman e RLE) desenvolvido para pesquisa em Computação Aplicada.",
     user: "DevEduLP",
     repo: "compression-benchmark",
-    demo: "https://devedulp.github.io/readme-forge/",
+    demo: "https://devedulp.github.io/readme-mint/",
     banner: "",
     techs: ["C", "Python", "Linux"],
     prereq: "GCC 11+\nPython 3.10+ (para geração dos gráficos comparativos)",
