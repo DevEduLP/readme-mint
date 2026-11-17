@@ -52,7 +52,7 @@ const TEMPLATES = {
     title: "ReadmeMint - Gerador de README.md",
     desc: "Ferramenta web open source e offline-first para criar arquivos README.md profissionais, badges dinâmicos, árvores de diretórios e licenças em segundos.",
     user: "DevEduLP",
-    repo: "readme-forge",
+    repo: "readme-mint",
     demo: "https://devedulp.github.io/readme-mint/",
     banner: "",
     techs: ["HTML5", "CSS3", "JavaScript", "Vercel"],
