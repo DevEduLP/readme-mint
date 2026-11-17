@@ -125,7 +125,6 @@ function showToast(msg) {
   toastTimer = setTimeout(() => els.toast.classList.remove("show"), 2200);
 }
 
-// Renderiza chips de tecnologias
 function renderTechChips() {
   els.techGrid.innerHTML = "";
   TECH_STACK.forEach((tech, index) => {
@@ -141,7 +140,6 @@ function renderTechChips() {
   });
 }
 
-// Adiciona badge customizada
 els.btnAddBadge.addEventListener("click", () => {
   const rawName = els.customName.value.trim();
   if (!rawName) return;
@@ -159,7 +157,6 @@ els.btnAddBadge.addEventListener("click", () => {
   showToast(`✓ Badge "${rawName}" adicionada!`);
 });
 
-// Aplica um template pronto
 function applyTemplate(key) {
   const tpl = TEMPLATES[key];
   if (!tpl) return;
@@ -184,7 +181,6 @@ function applyTemplate(key) {
   updateAll();
 }
 
-// Destaca template ativo na barra superior
 document.querySelectorAll(".tpl-btn").forEach(btn => {
   btn.addEventListener("click", () => {
     document.querySelectorAll(".tpl-btn").forEach(b => b.classList.remove("active"));
@@ -193,7 +189,6 @@ document.querySelectorAll(".tpl-btn").forEach(btn => {
   });
 });
 
-// Constrói árvore ASCII
 function buildAsciiTree(rawPaths) {
   const lines = rawPaths.split("\n").map(l => l.trim()).filter(Boolean);
   if (!lines.length) return "";
@@ -226,7 +221,6 @@ function buildAsciiTree(rawPaths) {
   return ".\n" + renderNode(root).trimEnd();
 }
 
-// Gera texto oficial da Licença
 function generateLicenseText(type, author) {
   const year = new Date().getFullYear();
   const holder = author || "Autor do Projeto";
@@ -291,7 +285,6 @@ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 GNU General Public License for more details.`;
 }
 
-// Atualiza Markdown, Preview, Licença e localStorage
 function updateAll() {
   const title = els.title.value.trim() || "Título do Projeto";
   const desc = els.desc.value.trim();
@@ -303,14 +296,12 @@ function updateAll() {
   const license = els.licenseSelect.value;
   const author = els.authorName.value.trim();
 
-  // Badges dinâmicos
   const repoBadges = [];
   if (els.badgeLicense.checked) repoBadges.push(`![License](https://img.shields.io/github/license/${user}/${repo}?style=flat-square)`);
   if (els.badgeStars.checked) repoBadges.push(`![Stars](https://img.shields.io/github/stars/${user}/${repo}?style=flat-square)`);
   if (els.badgeIssues.checked) repoBadges.push(`![Issues](https://img.shields.io/github/issues/${user}/${repo}?style=flat-square)`);
   if (els.badgeCommit.checked) repoBadges.push(`![Last Commit](https://img.shields.io/github/last-commit/${user}/${repo}?style=flat-square)`);
 
-  // Badges de tecnologias
   const techBadges = TECH_STACK.filter(t => t.selected).map(t => {
     const encodedName = encodeURIComponent(t.name.replace(/-/g, "--"));
     return `![${t.name}](https://img.shields.io/badge/${encodedName}-${t.color}?style=${style}&logo=${t.logo}&logoColor=${t.logoColor})`;
@@ -321,7 +312,6 @@ function updateAll() {
   const asciiTree = buildAsciiTree(els.treeInput.value);
   const install = els.installCmd.value.trim();
 
-  // Sumário dinâmico
   const tocItems = [];
   if (techBadges.length) tocItems.push("- [Tecnologias](#%EF%B8%8F-tecnologias-utilizadas)");
   if (featuresList) tocItems.push("- [Funcionalidades](#-funcionalidades)");
@@ -412,7 +402,6 @@ function escapeHtml(str) {
     .replace(/"/g, "&quot;");
 }
 
-// Persistência local
 function saveState() {
   const state = {
     title: els.title.value,
@@ -475,14 +464,12 @@ function loadState() {
   }
 }
 
-// Listeners gerais
 document.querySelectorAll("input, textarea, select").forEach(el => {
   if (el.id === "custom-tech-name" || el.id === "custom-tech-color") return;
   el.addEventListener("input", updateAll);
   el.addEventListener("change", updateAll);
 });
 
-// Tabs
 document.querySelectorAll(".tab").forEach(tab => {
   tab.addEventListener("click", () => {
     document.querySelectorAll(".tab").forEach(t => t.classList.remove("active"));
@@ -492,7 +479,6 @@ document.querySelectorAll(".tab").forEach(tab => {
   });
 });
 
-// Copiar Markdown
 els.btnCopy.addEventListener("click", async () => {
   await navigator.clipboard.writeText(els.mdOutput.value);
   const orig = els.btnCopy.textContent;
@@ -501,7 +487,6 @@ els.btnCopy.addEventListener("click", async () => {
   setTimeout(() => (els.btnCopy.textContent = orig), 1600);
 });
 
-// Downloads
 function downloadFile(filename, content) {
   const blob = new Blob([content], { type: "text/plain;charset=utf-8" });
   const url = URL.createObjectURL(blob);
@@ -516,7 +501,6 @@ function downloadFile(filename, content) {
 els.btnDownloadMd.addEventListener("click", () => downloadFile("README.md", els.mdOutput.value));
 els.btnDownloadLic.addEventListener("click", () => downloadFile("LICENSE", els.licenseOutput.value));
 
-// Restaurar padrão
 els.btnReset.addEventListener("click", () => {
   localStorage.removeItem(STORAGE_KEY);
   document.querySelectorAll(".tpl-btn").forEach(b => b.classList.remove("active"));
@@ -525,7 +509,6 @@ els.btnReset.addEventListener("click", () => {
   showToast("✓ Modelo padrão restaurado!");
 });
 
-// Alterna tema Dark / Light do card de Preview do GitHub
 const btnToggleTheme = document.getElementById("btn-toggle-theme");
 const ghCard = document.getElementById("gh-preview-card");
 const themeLabel = document.getElementById("preview-theme-label");
@@ -536,5 +519,4 @@ btnToggleTheme.addEventListener("click", () => {
   themeLabel.textContent = isLight ? "GitHub Light" : "GitHub Dark";
 });
 
-// Inicialização
 loadState();
